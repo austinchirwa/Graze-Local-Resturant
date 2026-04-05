@@ -1,67 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 40 30% 96%;
-    --foreground: 20 20% 10%;
+    /* ── Light mode — sourced from the Graze Local logo ── */
+    /* Background: warm off-white */
+    --background: 0 0% 97%;
+    --foreground: 0 0% 10%;
 
-    --card: 40 30% 98%;
-    --card-foreground: 20 20% 10%;
+    /* Card: pure white */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 40 30% 98%;
-    --popover-foreground: 20 20% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 359 81% 54%;
+    /* Primary: Logo's bold red — #E8181E */
+    --primary: 358 84% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 38 98% 55%;
-    --secondary-foreground: 20 20% 10%;
+    /* Secondary: Logo's golden amber — #F5A623 */
+    --secondary: 38 91% 55%;
+    --secondary-foreground: 0 0% 8%;
 
-    --muted: 40 20% 90%;
-    --muted-foreground: 25 15% 40%;
+    /* Muted: light warm grey */
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 42%;
 
-    --accent: 38 98% 55%;
-    --accent-foreground: 20 20% 10%;
+    /* Accent = secondary amber */
+    --accent: 38 91% 55%;
+    --accent-foreground: 0 0% 8%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 20% 85%;
-    --input: 40 20% 85%;
-    --ring: 359 81% 54%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 358 84% 50%;
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 20 14% 4%;
-    --foreground: 40 30% 96%;
+    /* ── Dark mode — logo's near-black — #1A1A1A ── */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
 
-    --card: 20 14% 8%;
-    --card-foreground: 40 30% 96%;
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 20 14% 8%;
-    --popover-foreground: 40 30% 96%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 359 81% 54%;
+    /* Primary unchanged: logo red */
+    --primary: 358 84% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 38 98% 55%;
-    --secondary-foreground: 20 14% 4%;
+    /* Secondary unchanged: logo amber */
+    --secondary: 38 91% 55%;
+    --secondary-foreground: 0 0% 8%;
 
-    --muted: 20 14% 12%;
-    --muted-foreground: 40 10% 70%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 38 98% 55%;
-    --accent-foreground: 20 14% 4%;
+    --accent: 38 91% 55%;
+    --accent-foreground: 0 0% 8%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 20 14% 16%;
-    --input: 20 14% 16%;
-    --ring: 359 81% 54%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 358 84% 50%;
   }
 }
 
@@ -69,7 +81,13 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 }
+

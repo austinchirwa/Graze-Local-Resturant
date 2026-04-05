@@ -60,7 +60,7 @@ export default function SpecialsPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-secondary/10 via-card to-card" />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <span className="inline-block mb-4 px-4 py-1.5 rounded-full border border-secondary/30 bg-secondary/10 text-secondary font-medium text-sm">This Week</span>
-          <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tight">Chef's Specials</h1>
+          <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tight">Chef&apos;s Specials</h1>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
             Seasonal dishes crafted fresh every week from the finest local ingredients.
           </p>
@@ -68,7 +68,7 @@ export default function SpecialsPage() {
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-8 bg-background border-b border-border sticky top-20 z-40">
+      <section className="py-8 bg-secondary/5 border-b border-border sticky top-20 z-40">
         <div className="container mx-auto px-4 flex items-center gap-3 flex-wrap">
           {CATEGORIES.map((cat) => (
             <button

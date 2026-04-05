@@ -18,7 +18,7 @@ export default function ContactPage() {
           <span className="inline-block mb-4 px-4 py-1.5 rounded-full border border-secondary/30 bg-secondary/10 text-secondary font-medium text-sm">Get in Touch</span>
           <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tight">Contact Us</h1>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Reservations, catering enquiries, or just want to say hello — we'd love to hear from you.
+            Reservations, catering enquiries, or just want to say hello — we&apos;d love to hear from you.
           </p>
         </div>
       </section>
@@ -37,7 +37,7 @@ export default function ContactPage() {
                 { icon: '✉️', title: 'Email', detail: 'hello@grazelocal.mw' },
                 { icon: '🕐', title: 'Opening Hours', detail: 'Mon – Fri: 11am – 10pm  |  Sat – Sun: 9am – 11pm' },
               ].map((info) => (
-                <div key={info.title} className="flex gap-4 p-5 rounded-2xl bg-card border border-border/50 hover:border-primary/40 transition-colors">
+                <div key={info.title} className="flex gap-4 p-5 rounded-2xl bg-card border border-border/50 hover:border-secondary/40 transition-colors">
                   <span className="text-2xl flex-shrink-0">{info.icon}</span>
                   <div>
                     <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wider mb-0.5">{info.title}</p>
@@ -62,16 +62,16 @@ export default function ContactPage() {
                 <div className="flex flex-col items-center justify-center h-80 rounded-3xl bg-card border border-border/50 text-center p-8">
                   <span className="text-5xl mb-4">🎉</span>
                   <h3 className="text-xl font-bold mb-2">Message Sent!</h3>
-                  <p className="text-muted-foreground text-sm">Thanks for reaching out. We'll get back to you within 24 hours.</p>
+                  <p className="text-muted-foreground text-sm">Thanks for reaching out. We&apos;ll get back to you within 24 hours.</p>
                   <button
                     onClick={() => setSent(false)}
-                    className="mt-6 px-6 py-2.5 rounded-full border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors text-sm font-semibold"
+                    className="mt-6 px-6 py-2.5 rounded-full border border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground transition-colors text-sm font-semibold"
                   >
                     Send Another
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-8 rounded-3xl bg-card border border-border/50">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-8 rounded-3xl bg-card border border-secondary/30 shadow-lg shadow-secondary/5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-semibold text-muted-foreground mb-1.5 uppercase tracking-wider">Name</label>
@@ -113,7 +113,7 @@ export default function ContactPage() {
                   </div>
                   <button
                     type="submit"
-                    className="mt-2 w-full py-3.5 bg-primary text-primary-foreground rounded-xl font-bold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/20"
+                    className="mt-2 w-full py-3.5 bg-secondary text-secondary-foreground rounded-xl font-bold hover:bg-secondary/90 transition-all hover:shadow-lg hover:shadow-secondary/20"
                   >
                     Send Message
                   </button>

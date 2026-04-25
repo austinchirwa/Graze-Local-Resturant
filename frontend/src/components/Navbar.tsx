@@ -1,100 +1,112 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import grazeLogo from '../../pictures/GrazeLocal.png';
 
 const NAV_LINKS = [
   { label: 'Homepage', to: '/' },
   { label: 'About Us', to: '/about' },
-  { label: 'Menu', to: '/specials' },
-  { label: 'Specials', to: '/specials' },
+  { label: 'Menu', to: '/menu' },
   { label: 'Events', to: '/events' },
   { label: 'Contact', to: '/contact' },
 ];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `relative py-1 transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-[2px] after:bg-primary after:transition-all after:duration-300 ${
-      isActive
-        ? 'text-primary after:w-full'
-        : 'hover:text-primary after:w-0 hover:after:w-full'
-    }`;
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <NavLink to="/" className="flex items-center gap-2 group">
-          <div className="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 transition-transform group-hover:scale-105">
-            <img
-              src="/logo.png"
-              alt="Graze Local Logo"
-              className="w-full h-full object-contain"
-              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-            />
+    <header 
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white border-b border-border py-4 shadow-sm"
+    >
+      <div className="w-full px-4 md:px-8">
+        <nav className="flex items-center justify-between">
+          
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="relative">
+              <img 
+                src={grazeLogo} 
+                alt="Graze Local Logo" 
+                className="h-10 w-10 md:h-12 md:w-12 rounded-xl object-contain transition-transform group-hover:scale-105"
+              />
+              <div className="absolute inset-0 rounded-xl bg-primary/20 blur opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <span className="text-xl md:text-2xl font-black tracking-tight whitespace-nowrap">
+              Graze <span className="text-primary">Local</span> Restaurant
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8">
+            {NAV_LINKS.map(({ label, to }) => (
+              <NavLink
+                key={label}
+                to={to}
+                end={to === '/'}
+                className={({ isActive }) =>
+                  `text-sm font-semibold transition-colors hover:text-primary ${
+                    isActive ? 'text-primary' : 'text-muted-foreground'
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
           </div>
-          <div className="flex flex-col leading-tight">
-            <span className="text-xl font-black tracking-tight text-primary leading-none">Graze</span>
-            <span className="text-[10px] font-bold tracking-widest text-foreground uppercase leading-none mt-0.5">Local Restaurant</span>
-          </div>
-        </NavLink>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-7 text-sm font-medium">
-          {NAV_LINKS.map(({ label, to }) => (
-            <NavLink key={label} to={to} end={to === '/'} className={linkClass}>
-              {label}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <NavLink
-            to="/contact"
-            className="bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:bg-primary/90 transition-all shadow-lg hover:shadow-primary/20 hidden sm:block text-sm"
-          >
-            Book a Table
-          </NavLink>
-
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <span className={`block h-0.5 w-6 bg-foreground transition-transform duration-300 ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />
-            <span className={`block h-0.5 w-6 bg-foreground transition-opacity duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block h-0.5 w-6 bg-foreground transition-transform duration-300 ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile dropdown */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ${menuOpen ? 'max-h-80' : 'max-h-0'}`}>
-        <nav className="flex flex-col gap-1 px-6 pb-5 pt-2 border-t border-border bg-background/95 backdrop-blur-md">
-          {NAV_LINKS.map(({ label, to }) => (
-            <NavLink
-              key={label}
-              to={to}
-              end={to === '/'}
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                `py-2.5 text-sm font-medium transition-colors border-b border-border/30 last:border-0 ${
-                  isActive ? 'text-primary' : 'hover:text-primary'
-                }`
-              }
+          {/* CTA & Mobile Toggle */}
+          <div className="flex items-center gap-4">
+            <Link 
+              to="/contact" 
+              className="hidden sm:inline-block px-6 py-2.5 bg-primary text-primary-foreground rounded-full text-sm font-bold hover:bg-primary/90 transition-transform hover:scale-105 shadow-lg shadow-primary/20"
             >
-              {label}
-            </NavLink>
-          ))}
-          <NavLink
-            to="/contact"
-            onClick={() => setMenuOpen(false)}
-            className="mt-3 bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-semibold hover:bg-primary/90 transition-all text-sm text-center"
-          >
-            Book a Table
-          </NavLink>
+              Reserve Table
+            </Link>
+            
+            <button 
+              className="lg:hidden p-2 text-foreground"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+              </svg>
+            </button>
+          </div>
         </nav>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border p-6 flex flex-col gap-4 shadow-2xl animate-in slide-in-from-top duration-300">
+            {NAV_LINKS.map(({ label, to }) => (
+              <NavLink
+                key={label}
+                to={to}
+                end={to === '/'}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `text-lg font-bold transition-colors ${
+                    isActive ? 'text-primary' : 'text-foreground'
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
+            <Link 
+              to="/contact" 
+              onClick={() => setIsOpen(false)}
+              className="mt-4 px-6 py-3 bg-primary text-primary-foreground rounded-xl text-center font-bold"
+            >
+              Reserve Table
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );

@@ -59,3 +59,33 @@ const MENU_ITEMS: MenuItem[] = [
     icon: '🍰',
   },
 ];
+
+export default function Menu() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {MENU_ITEMS.map((item) => (
+        <div 
+          key={item.id} 
+          className="group relative p-8 rounded-3xl bg-background border border-border/50 hover:border-primary/40 transition-all hover:shadow-xl hover:shadow-primary/5"
+        >
+          <div className="flex justify-between items-start mb-6">
+            <span className="text-4xl group-hover:scale-125 transition-transform duration-300">{item.icon}</span>
+            <span className="bg-secondary/10 text-secondary-foreground px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
+              {item.category}
+            </span>
+          </div>
+          <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{item.name}</h3>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+            {item.description}
+          </p>
+          <div className="flex justify-between items-center pt-4 border-t border-border/50">
+            <span className="text-lg font-black text-foreground">{item.price}</span>
+            <button className="w-10 h-10 rounded-full bg-primary/5 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+              +
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}

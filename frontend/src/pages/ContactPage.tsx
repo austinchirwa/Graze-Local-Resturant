@@ -32,10 +32,10 @@ export default function ContactPage() {
             <div className="flex flex-col gap-5">
               <h2 className="text-2xl font-black mb-2">Find Us</h2>
               {[
-                { icon: '📍', title: 'Address', detail: '12 Market Street, Old Town, Lilongwe, Malawi' },
-                { icon: '📞', title: 'Phone', detail: '+265 999 123 456' },
-                { icon: '✉️', title: 'Email', detail: 'hello@grazelocal.mw' },
-                { icon: '🕐', title: 'Opening Hours', detail: 'Mon – Fri: 11am – 10pm  |  Sat – Sun: 9am – 11pm' },
+                { icon: '📍', title: 'Address', detail: 'St Denis, Mzuzu Old Town, Mzuzu.' },
+                { icon: '📞', title: 'Phone', detail: '0993355560' },
+                { icon: '✉️', title: 'Email', detail: 'austinmubaya3@gmail.com' },
+                { icon: '🕐', title: 'Opening Hours', detail: 'Sun – Fri: 6am – 5pm' },
               ].map((info) => (
                 <div key={info.title} className="flex gap-4 p-5 rounded-2xl bg-card border border-border/50 hover:border-secondary/40 transition-colors">
                   <span className="text-2xl flex-shrink-0">{info.icon}</span>

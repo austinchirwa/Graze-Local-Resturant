@@ -56,8 +56,8 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             {[
               { icon: '🌽', title: 'Farm Fresh', desc: 'Sourced daily from local farmers within a 50km radius.' },
-              { icon: '🔥', title: 'Wood Fired', desc: 'Traditional cooking methods met with modern culinary flair.' },
-              { icon: '🍷', title: 'Curated Drinks', desc: 'Hand-picked local and international selections to pair perfectly.' },
+              { icon: '📍', title: 'Location', desc: 'Conveniently located in the heart of Mzuzu Old Town.' },
+              { icon: '📶', title: 'Free WiFi', desc: 'Stay connected with our complimentary high-speed internet access.' },
             ].map((feature, i) => (
               <div key={i} className="group p-8 rounded-3xl hover:bg-background transition-colors duration-500">
                 <span className="text-5xl mb-6 block group-hover:scale-110 transition-transform">{feature.icon}</span>

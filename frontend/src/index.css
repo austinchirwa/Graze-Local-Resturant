@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Light mode — sourced from the Graze Local logo ── */
+    /* Background: warm off-white */
+    --background: 0 0% 97%;
+    --foreground: 0 0% 10%;
+
+    /* Card: pure white */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Primary: Logo's bold red — #E8181E */
+    --primary: 358 84% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Logo's golden amber — #F5A623 */
+    --secondary: 38 91% 55%;
+    --secondary-foreground: 0 0% 8%;
+
+    /* Muted: light warm grey */
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 42%;
+
+    /* Accent = secondary amber */
+    --accent: 38 91% 55%;
+    --accent-foreground: 0 0% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 358 84% 50%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* ── White mode — pure white background ── */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Primary unchanged: logo red */
+    --primary: 358 84% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary unchanged: logo amber */
+    --secondary: 38 91% 55%;
+    --secondary-foreground: 0 0% 8%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 38 91% 55%;
+    --accent-foreground: 0 0% 8%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 358 84% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
